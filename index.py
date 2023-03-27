@@ -171,6 +171,7 @@ left, top, right, bottom = win32gui.GetWindowRect(handle)
 winP = [left, top, right, bottom]
 
 win_active(handle)
+win32gui.SetWindowPos(handle, win32con.HWND_TOPMOST,100,100,1216,778,win32con.SWP_SHOWWINDOW)
 
 clickPic('./1.png', 0.5)
 time.sleep(1)

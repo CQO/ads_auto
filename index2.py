@@ -172,93 +172,14 @@ winP = [left, top, right, bottom]
 
 win_active(handle)
 
-clickPic('./1.png', 0.5)
+if (not clickPic('./s1.png', 0.9)):
+    clickPic('./s2.png', 0.9)
 time.sleep(1)
-clickPic('./2.png', 0.9)
+clickPic('./s3.png', 0.9)
 time.sleep(0.5)
-findkPic('./2-1.png', 0.9, 0, -100)
+clickPic('./s4.png', 0.9, 10, 200)
 time.sleep(0.5)
-# 分组
-wheelFindImg(350, './3.png', 0.9, 200)
+clickPic('./s5.png', 0.9)
+time.sleep(2)
+clickPic('./s6.png', 0.9)
 time.sleep(0.5)
-pyperclip.copy(random.randint(100000,999999))
-spam = pyperclip.paste()
-time.sleep(0.5)
-press_release_keys('CTRL', 'V')
-time.sleep(0.5)
-clickPic('./2-2.png', 0.9)
-time.sleep(0.5)
-press_release_keys('CTRL', 'V')
-time.sleep(0.5)
-wheelFindImg(-350, './4.png', 0.9, 200)
-time.sleep(0.5)
-findkPic('./5.png', 0.9)
-time.sleep(0.5)
-wheelFindImg(-150, './6.png', 0.9)
-time.sleep(0.5)
-wheelFindImg(-350, './7.png', 0.9, 200)
-time.sleep(0.5)
-# 地区
-pyperclip.copy(config["地区"])
-spam = pyperclip.paste()
-time.sleep(0.5)
-press_release_keys('CTRL', 'V')
-time.sleep(0.5)
-if (not clickPic('./8.png', 0.9)):
-    clickPic('./9.png', 0.9)
-time.sleep(0.5)
-findkPic('./2-1.png', 0.9, 0, -100)
-# 导入数量
-wheelFindImg(-350, './10.png', 0.9, 200)
-time.sleep(0.5)
-pyperclip.copy(config["导入数量"])
-spam = pyperclip.paste()
-time.sleep(0.5)
-press_release_keys('CTRL', 'A')
-time.sleep(0.5)
-press_release_keys('CTRL', 'V')
-time.sleep(0.5)
-clickPic('./2-1.png', 0.9)
-time.sleep(3)
-clickPic('./11.png', 0.9)
-# clickWindows(200, 220, winP)
-# win32api.keybd_event(0x11, 0, 0, 0)
-# win32api.keybd_event(0x56, 0, 0, 0)
-# win32api.keybd_event(0x56, 0, win32con.KEYEVENTF_KEYUP, 0)
-# win32api.keybd_event(0x11, 0, win32con.KEYEVENTF_KEYUP, 0)
-# win32gui.SendMessage(temp[0], win32con.WM_SETTEXT,0,'hello3')
-# length = win32gui.SendMessage(temp[0], win32con.WM_GETTEXTLENGTH)
-# buf = PyMakeBuffer(length)
-# print('get: ', win32gui.SendMessage(temp[0], win32con.WM_GETTEXT, length, buf))
-# menuHandle = win32gui.GetMenu(handle)
-# hwndChildList = []
-
-# win32gui.EnumChildWindows(handle, lambda hwnd, param: param.append(hwnd), hwndChildList)
-# subHandle = win32gui.FindWindowEx(handle, 0, "EDIT", None)
-# # 获得窗口的菜单句柄
-# print(subHandle)
-# menuHandle = win32gui.GetMenu(handle)
-# print(menuHandle)
-# # 获得子菜单句柄
-# if (menuHandle > 0):
-#     subMenuHandle = win32gui.GetSubMenu(menuHandle, 0)
-#     print(subMenuHandle)
-
-# #执行左单键击，若需要双击则延时几毫秒再点击一次即可
-# win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP | win32con.MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
-
-# #右键单击
-# win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTUP | win32con.MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0)
-
-#鼠标滚动，-1代表向下移动一个单位，1代表向上移动一个单位
-# win32api.mouse_event(win32con.MOUSEEVENTF_WHEEL,0,0,-1)
-
-#鼠标定位到(30,50)
-
-# win32api.SetCursorPos([30,150])
-
-# #右键单击
-# win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTUP | win32con.MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0)
-
-#鼠标滚动，-1代表向下移动一个单位，1代表向上移动一个单位
-# win32api.mouse_event(win32con.MOUSEEVENTF_WHEEL,0,0,-1)

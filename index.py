@@ -145,15 +145,19 @@ def clickScreen (x, y):
 def findkPic (img, confidence, xc = 0, yc = 0):
     imgPos = pyautogui.locateCenterOnScreen(img,confidence=confidence)
     if (imgPos):
+        print('找到元素:' + img)
         win32api.SetCursorPos([imgPos[0] + xc, imgPos[1] + yc])
         return True
+    print('没有元素:' + img)
     return False
 
 def clickPic (img, confidence, xc = 0, yc = 0):
     imgPos = pyautogui.locateCenterOnScreen(img,confidence=confidence)
     if (imgPos):
+        print('找到元素:' + img)
         clickScreen(imgPos[0] + xc, imgPos[1] + yc)
         return True
+    print('没有元素:' + img)
     return False
 
 def wheelFindImg(wheelNum, img, confidence, xc = 0, yc = 0):
@@ -161,67 +165,102 @@ def wheelFindImg(wheelNum, img, confidence, xc = 0, yc = 0):
         print('寻找元素:' + img)
         win32api.mouse_event(win32con.MOUSEEVENTF_WHEEL,0,0, wheelNum)
         time.sleep(0.5)
+while True:
+    temp = match_windows("AdsPower")
+    print(temp)
+    handle = temp[0]
+    # 获取窗口位置
+    left, top, right, bottom = win32gui.GetWindowRect(handle)
 
-temp = match_windows("AdsPower")
-print(temp)
-handle = temp[0]
-# 获取窗口位置
-left, top, right, bottom = win32gui.GetWindowRect(handle)
+    winP = [left, top, right, bottom]
 
-winP = [left, top, right, bottom]
+    win_active(handle)
+    # win32gui.SetWindowPos(handle, win32con.HWND_TOPMOST,100,100,1016,778,win32con.SWP_SHOWWINDOW)
+    # 删除分组
+    if (not clickPic('./s1.png', 0.9)):
+        clickPic('./s2.png', 0.9)
+    time.sleep(1)
+    clickPic('./s3.png', 0.9)
+    time.sleep(0.5)
+    clickPic('./s4.png', 0.9, 10, 143)
+    time.sleep(0.5)
+    clickPic('./s5.png', 0.9)
+    time.sleep(2)
+    clickPic('./s6.png', 0.9)
+    time.sleep(config["步骤间隔"])
 
-win_active(handle)
-win32gui.SetWindowPos(handle, win32con.HWND_TOPMOST,100,100,1216,778,win32con.SWP_SHOWWINDOW)
+    # 新建
+    clickPic('./1.png', 0.5)
+    time.sleep(1)
+    clickPic('./2.png', 0.9)
+    time.sleep(0.5)
+    findkPic('./2-1.png', 0.9, 0, -100)
+    time.sleep(0.5)
+    # 分组
+    wheelFindImg(350, './3.png', 0.9, 200)
+    time.sleep(0.5)
+    pyperclip.copy(random.randint(100000,999999))
+    spam = pyperclip.paste()
+    time.sleep(0.5)
+    press_release_keys('CTRL', 'V')
+    time.sleep(0.5)
+    clickPic('./2-2.png', 0.9)
+    time.sleep(0.5)
+    press_release_keys('CTRL', 'V')
+    time.sleep(0.5)
+    wheelFindImg(-350, './4.png', 0.9, 200)
+    time.sleep(0.5)
+    findkPic('./5.png', 0.9)
+    time.sleep(0.5)
+    wheelFindImg(-150, './6.png', 0.9)
+    time.sleep(0.5)
+    wheelFindImg(-350, './7.png', 0.9, 200)
+    time.sleep(0.5)
+    # 地区
+    pyperclip.copy(config["地区"])
+    spam = pyperclip.paste()
+    time.sleep(0.5)
+    press_release_keys('CTRL', 'V')
+    time.sleep(0.5)
+    if (not clickPic('./8.png', 0.9)):
+        clickPic('./9.png', 0.9)
+    time.sleep(0.5)
+    findkPic('./2-1.png', 0.9, 0, -100)
+    # 导入数量
+    wheelFindImg(-350, './10.png', 0.9, 200)
+    time.sleep(0.5)
+    pyperclip.copy(config["导入数量"])
+    spam = pyperclip.paste()
+    time.sleep(0.5)
+    press_release_keys('CTRL', 'A')
+    time.sleep(0.5)
+    press_release_keys('CTRL', 'V')
+    time.sleep(0.5)
+    clickPic('./2-1.png', 0.9)
+    time.sleep(3)
+    clickPic('./11.png', 0.9)
 
-clickPic('./1.png', 0.5)
-time.sleep(1)
-clickPic('./2.png', 0.9)
-time.sleep(0.5)
-findkPic('./2-1.png', 0.9, 0, -100)
-time.sleep(0.5)
-# 分组
-wheelFindImg(350, './3.png', 0.9, 200)
-time.sleep(0.5)
-pyperclip.copy(random.randint(100000,999999))
-spam = pyperclip.paste()
-time.sleep(0.5)
-press_release_keys('CTRL', 'V')
-time.sleep(0.5)
-clickPic('./2-2.png', 0.9)
-time.sleep(0.5)
-press_release_keys('CTRL', 'V')
-time.sleep(0.5)
-wheelFindImg(-350, './4.png', 0.9, 200)
-time.sleep(0.5)
-findkPic('./5.png', 0.9)
-time.sleep(0.5)
-wheelFindImg(-150, './6.png', 0.9)
-time.sleep(0.5)
-wheelFindImg(-350, './7.png', 0.9, 200)
-time.sleep(0.5)
-# 地区
-pyperclip.copy(config["地区"])
-spam = pyperclip.paste()
-time.sleep(0.5)
-press_release_keys('CTRL', 'V')
-time.sleep(0.5)
-if (not clickPic('./8.png', 0.9)):
-    clickPic('./9.png', 0.9)
-time.sleep(0.5)
-findkPic('./2-1.png', 0.9, 0, -100)
-# 导入数量
-wheelFindImg(-350, './10.png', 0.9, 200)
-time.sleep(0.5)
-pyperclip.copy(config["导入数量"])
-spam = pyperclip.paste()
-time.sleep(0.5)
-press_release_keys('CTRL', 'A')
-time.sleep(0.5)
-press_release_keys('CTRL', 'V')
-time.sleep(0.5)
-clickPic('./2-1.png', 0.9)
-time.sleep(3)
-clickPic('./11.png', 0.9)
+    time.sleep(config["步骤间隔"])
+
+    # 账号管理
+    if (not clickPic('./z1.png', 0.9)):
+        clickPic('./z2.png', 0.9)
+    time.sleep(1)
+    clickPic('./z3.png', 0.9)
+    time.sleep(0.5)
+    clickPic('./z4.png', 0.9, 0, -40)
+    time.sleep(0.5)
+    clickPic('./z8.png', 0.9, 0, 0)
+    time.sleep(2)
+    clickPic('./z9.png', 0.9, 0, 0)
+    time.sleep(0.5)
+    clickPic('./z10.png', 0.9, 0, 0)
+    time.sleep(0.5)
+    clickPic('./z11.png', 0.9, 0, 0)
+    time.sleep(0.5)
+    clickPic('./z12.png', 0.9, 0, 0)
+
+    time.sleep(config["循环间隔"])
 # clickWindows(200, 220, winP)
 # win32api.keybd_event(0x11, 0, 0, 0)
 # win32api.keybd_event(0x56, 0, 0, 0)

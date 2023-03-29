@@ -2,8 +2,6 @@ import win32gui, win32con
 import win32api
 import pyautogui
 import time
-import os
-import random
 import json
 import cv2 as cv
 import pyperclip
@@ -177,6 +175,9 @@ while True:
     win_active(handle)
     # win32gui.SetWindowPos(handle, win32con.HWND_TOPMOST,100,100,1016,778,win32con.SWP_SHOWWINDOW)
     # 删除分组
+    
+    clickPic('./qx.png', 0.9)
+    time.sleep(1)
     if (not clickPic('./s1.png', 0.9)):
         clickPic('./s2.png', 0.9)
     time.sleep(1)
@@ -191,7 +192,7 @@ while True:
 
     # 新建
     clickPic('./1.png', 0.5)
-    time.sleep(1)
+    time.sleep(3)
     clickPic('./2.png', 0.9)
     time.sleep(0.5)
     findkPic('./2-1.png', 0.9, 0, -100)
@@ -199,7 +200,7 @@ while True:
     # 分组
     wheelFindImg(350, './3.png', 0.9, 200)
     time.sleep(0.5)
-    pyperclip.copy(random.randint(100000,999999))
+    pyperclip.copy(config["分组"])
     spam = pyperclip.paste()
     time.sleep(0.5)
     press_release_keys('CTRL', 'V')
@@ -237,7 +238,7 @@ while True:
     press_release_keys('CTRL', 'V')
     time.sleep(0.5)
     clickPic('./2-1.png', 0.9)
-    time.sleep(3)
+    time.sleep(20)
     clickPic('./11.png', 0.9)
 
     time.sleep(config["步骤间隔"])
@@ -249,17 +250,18 @@ while True:
     clickPic('./z3.png', 0.9)
     time.sleep(0.5)
     clickPic('./z4.png', 0.9, 0, -40)
-    time.sleep(0.5)
+    time.sleep(5)
     clickPic('./z8.png', 0.9, 0, 0)
     time.sleep(2)
     clickPic('./z9.png', 0.9, 0, 0)
     time.sleep(0.5)
     clickPic('./z10.png', 0.9, 0, 0)
-    time.sleep(0.5)
+    time.sleep(3)
     clickPic('./z11.png', 0.9, 0, 0)
     time.sleep(0.5)
+    # win_active(handle)
     clickPic('./z12.png', 0.9, 0, 0)
-
+    time.sleep(50)
     time.sleep(config["循环间隔"])
 # clickWindows(200, 220, winP)
 # win32api.keybd_event(0x11, 0, 0, 0)
